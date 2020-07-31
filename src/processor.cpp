@@ -2,7 +2,7 @@
 
 #include "linux_parser.h"
 
-// TODO: Return the aggregate CPU utilization
+// Return the aggregate CPU utilization
 // Used the suggestion from this StackOverflow post for calculation
 // https://stackoverflow.com/questions/23367857/accurate-calculation-of-cpu-usage-given-in-percentage-in-linux
 // Dynamically calculates the Cpu utilization

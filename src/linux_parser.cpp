@@ -67,7 +67,7 @@ vector<int> LinuxParser::Pids() {
   return pids;
 }
 
-// TODO: Read and return the system memory utilization
+// Read and return the system memory utilization
 float LinuxParser::MemoryUtilization() {
   string line;
   string key;
@@ -90,7 +90,7 @@ float LinuxParser::MemoryUtilization() {
   return (memTotal - memFree) / memTotal;
 }
 
-// TODO: Read and return the system uptime
+// Read and return the system uptime
 long LinuxParser::UpTime() {
   long seconds{0};
   std::ifstream filestream(kProcDirectory + kUptimeFilename);
@@ -100,12 +100,12 @@ long LinuxParser::UpTime() {
   return seconds;
 }
 
-// TODO: Read and return the number of jiffies for the system
+// Read and return the number of jiffies for the system
 long LinuxParser::Jiffies() {
   return LinuxParser::ActiveJiffies() + LinuxParser::IdleJiffies();
 }
 
-// TODO: Read and return the number of active jiffies for a PID
+// Read and return the number of active jiffies for a PID
 // Sums up the times at index 14-17 in the file path /proc/[pid]/stat
 // Times at index 14-17 are utime, stime, ctime and cstime
 long LinuxParser::ActiveJiffies(int pid) {
@@ -129,7 +129,7 @@ long LinuxParser::ActiveJiffies(int pid) {
   return totalClockTicks / sysconf(_SC_CLK_TCK);
 }
 
-// TODO: Read and return the number of active jiffies for the system
+// Read and return the number of active jiffies for the system
 // Sums all the values(except 4th && 5th) on the first line of file path
 // /proc/stat
 long LinuxParser::ActiveJiffies() {
@@ -151,7 +151,7 @@ long LinuxParser::ActiveJiffies() {
   return activeJiffies;
 }
 
-// TODO: Read and return the number of idle jiffies for the system
+// Read and return the number of idle jiffies for the system
 // Sums the 4th and 5th values on first line of file path /proc/stat
 long LinuxParser::IdleJiffies() {
   string cpu;
@@ -172,7 +172,7 @@ long LinuxParser::IdleJiffies() {
   return idleJiffies;
 }
 
-// TODO: Read and return the total number of processes
+// Read and return the total number of processes
 int LinuxParser::TotalProcesses() {
   string line;
   string key;
@@ -191,7 +191,7 @@ int LinuxParser::TotalProcesses() {
   return total_processes;
 }
 
-// TODO: Read and return the number of running processes
+// Read and return the number of running processes
 int LinuxParser::RunningProcesses() {
   string line;
   string key;
@@ -210,7 +210,7 @@ int LinuxParser::RunningProcesses() {
   return processes;
 }
 
-// TODO: Read and return the command associated with a process
+// Read and return the command associated with a process
 string LinuxParser::Command(int pid) {
   string line{""};
   std::ifstream filestream(kProcDirectory + "/" + to_string(pid) + "/" +
@@ -221,7 +221,7 @@ string LinuxParser::Command(int pid) {
   return line;
 }
 
-// TODO: Read and return the memory used by a process
+// Read and return the memory used by a process
 // Returns the memory used in megabytes
 string LinuxParser::Ram(int pid) {
   string line{""};
@@ -243,7 +243,7 @@ string LinuxParser::Ram(int pid) {
   return to_string(ram_KB / 1024);
 }
 
-// TODO: Read and return the user ID associated with a process
+// Read and return the user ID associated with a process
 // Reads file in path /proc/[pid]/status and returns first number associated
 // with the key Uid
 string LinuxParser::Uid(int pid) {
@@ -265,7 +265,7 @@ string LinuxParser::Uid(int pid) {
   return uid;
 }
 
-// TODO: Read and return the user associated with a process
+// Read and return the user associated with a process
 string LinuxParser::User(int pid) {
   string uid = Uid(pid);
   string line, user_name, user_id;
@@ -285,7 +285,7 @@ string LinuxParser::User(int pid) {
   return user_name;
 }
 
-// TODO: Read and return the uptime of a process
+// Read and return the uptime of a process
 long LinuxParser::UpTime(int pid) {
   string str;
   long starttime{0};
